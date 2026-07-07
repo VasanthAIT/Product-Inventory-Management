@@ -18,7 +18,6 @@ export class UsersService {
     const users = await this.usersRepository.find();
 
     return {
-      statusCode: 200,
       message: 'Users fetched successfully',
       data: users.map((user) => this.toUserResponse(user)),
     };
@@ -28,7 +27,6 @@ export class UsersService {
     const user = await this.findUser(id);
 
     return {
-      statusCode: 200,
       message: 'User fetched successfully',
       data: this.toUserResponse(user),
     };
@@ -44,7 +42,6 @@ export class UsersService {
     }
 
     return {
-      statusCode: 200,
       message: 'User fetched successfully',
       data: this.toUserResponse(user),
     };
@@ -57,7 +54,6 @@ export class UsersService {
     const updatedUser = await this.usersRepository.save(user);
 
     return {
-      statusCode: 200,
       message: 'User updated successfully',
       data: this.toUserResponse(updatedUser),
     };
@@ -69,7 +65,6 @@ export class UsersService {
     await this.usersRepository.remove(user);
 
     return {
-      statusCode: 200,
       message: 'User deleted successfully',
     };
   }

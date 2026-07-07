@@ -1,5 +1,5 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Column, CreateDateColumn, UpdateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+ 
 import { ProductEntity } from '../../products/entities/product.entity';
 
 @Entity('categories')
@@ -14,7 +14,10 @@ export class CategoryEntity {
   description?: string;
 
   @CreateDateColumn()
-  timestamps!: Date;
+  createdAt!: Date;
+
+  @UpdateDateColumn()
+  updatedAt!: Date;
 
   @OneToMany(() => ProductEntity, (product) => product.category)
   products!: ProductEntity[];
