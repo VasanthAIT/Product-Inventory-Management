@@ -33,18 +33,21 @@ export class CategoriesController {
 
   @Get()
   @Roles(Role.Admin, Role.User)
+  @HttpCode(HttpStatus.OK)
   findAll() {
     return this.categoriesService.findAll();
   }
 
   @Get(':id')
   @Roles(Role.Admin, Role.User)
+  @HttpCode(HttpStatus.OK)
   findOne(@Param('id') id: string) {
     return this.categoriesService.findOne(Number(id));
   }
 
   @Patch(':id')
   @Roles(Role.Admin)
+  @HttpCode(HttpStatus.OK)
   update(
     @Param('id') id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
@@ -54,6 +57,7 @@ export class CategoriesController {
 
   @Delete(':id')
   @Roles(Role.Admin)
+  @HttpCode(HttpStatus.OK)
   remove(@Param('id') id: string) {
     return this.categoriesService.remove(Number(id));
   }
